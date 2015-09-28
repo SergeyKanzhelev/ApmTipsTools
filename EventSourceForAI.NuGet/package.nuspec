@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package >
+    <metadata minClientVersion="2.6">
+        <id>Microsoft.ApplicationInsights.EventSourceForEvents</id>
+        <version>1.0.0</version>
+        <title>Microsoft Application Insights package to report ETW events for requests.</title>
+        <authors>Sergey Kanzhelev</authors>
+        <owners>Sergey Kanzhelev</owners>
+        <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=510709</licenseUrl>
+        <projectUrl>http://go.microsoft.com/fwlink/?LinkID=510710</projectUrl>
+        <iconUrl>http://appanacdn.blob.core.windows.net/cdn/icons/aic.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>This NuGet enables installs telemetry initializer that will report ETW event when request telemetry is about to be sent. This NuGet should be imported the last.</description>
+        <copyright>Copyright c Microsoft. All Rights Reserved.</copyright>
+        <releaseNotes />
+        <tags>Instrumentation Analytics ApplicationInsights Telemetry AppInsights</tags>
+        <dependencies>
+            <dependency id="Microsoft.ApplicationInsights" version="1.2.0"/>
+        </dependencies>
+      
+    </metadata>
+    <files>
+	    <file src="..\EventSourceForAI\bin\$Configuration$\EventSourceForAI.dll" target="lib\net45\" />
+	    <file src="ApplicationInsights.config.install.xdt" target="content" />
+	    <file src="ApplicationInsights.config.uninstall.xdt" target="content" />
+    </files>
+
+</package>
