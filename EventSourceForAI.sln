@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2E2B29
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEventSource", "TestEventSource\TestEventSource.csproj", "{55B9B025-163F-42B2-A843-03A44AEF82FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{94B6D801-A89C-4E87-ABBE-4F7F29CE7EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94B6D801-A89C-4E87-ABBE-4F7F29CE7EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94B6D801-A89C-4E87-ABBE-4F7F29CE7EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B9B025-163F-42B2-A843-03A44AEF82FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B9B025-163F-42B2-A843-03A44AEF82FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B9B025-163F-42B2-A843-03A44AEF82FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B9B025-163F-42B2-A843-03A44AEF82FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

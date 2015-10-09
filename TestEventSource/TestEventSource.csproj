@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F7983AD-2EBE-4C73-BBFB-6FF5401238A6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{55B9B025-163F-42B2-A843-03A44AEF82FB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EventSourceForAI</RootNamespace>
-    <AssemblyName>EventSourceForAI</AssemblyName>
+    <RootNamespace>TestEventSource</RootNamespace>
+    <AssemblyName>TestEventSource</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,6 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,47 +45,21 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationInsightsEventSource.cs" />
-    <Compile Include="EventSourceTelemetryInitializer.cs" />
-    <Compile Include="External\AjaxCallData.cs" />
-    <Compile Include="External\AppInsightsTypes.g.cs" />
-    <Compile Include="External\ComponentContextData.cs" />
-    <Compile Include="External\ContextTagKeys.cs" />
-    <Compile Include="External\ContextTagKeys.g.cs" />
-    <Compile Include="External\DataPoint.cs" />
-    <Compile Include="External\DependencyKind.g.cs" />
-    <Compile Include="External\DeviceContextData.cs" />
-    <Compile Include="External\EventData.cs" />
-    <Compile Include="External\ExceptionData.cs" />
-    <Compile Include="External\ExceptionDetails.cs" />
-    <Compile Include="External\InternalContextData.cs" />
-    <Compile Include="External\LocationContextData.cs" />
-    <Compile Include="External\MessageData.cs" />
-    <Compile Include="External\MetricData.cs" />
-    <Compile Include="External\OperationContextData.cs" />
-    <Compile Include="External\PageViewData.cs" />
-    <Compile Include="External\PageViewPerfData.cs" />
-    <Compile Include="External\PerformanceCounterData.cs" />
-    <Compile Include="External\PerformanceCounterData.g.cs" />
-    <Compile Include="External\RemoteDependencyData.cs" />
-    <Compile Include="External\RequestData.cs" />
-    <Compile Include="External\SessionContextData.cs" />
-    <Compile Include="External\SessionStateData.cs" />
-    <Compile Include="External\SessionStateData.g.cs" />
-    <Compile Include="External\SeverityLevel.g.cs" />
-    <Compile Include="External\StackFrame.cs" />
-    <Compile Include="External\Tags.cs" />
-    <Compile Include="External\UserContextData.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventSourceForAI\EventSourceForAI.csproj">
+      <Project>{8f7983ad-2ebe-4c73-bbfb-6ff5401238a6}</Project>
+      <Name>EventSourceForAI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
