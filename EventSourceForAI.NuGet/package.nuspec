@@ -2,7 +2,7 @@
 <package >
     <metadata minClientVersion="2.6">
         <id>Microsoft.ApplicationInsights.EventSourceForEvents</id>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <title>Microsoft Application Insights package to report ETW events for requests.</title>
         <authors>Sergey Kanzhelev</authors>
         <owners>Sergey Kanzhelev</owners>
