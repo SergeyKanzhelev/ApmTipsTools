@@ -1,21 +1,26 @@
 ﻿namespace EventSourceForAI
 {
     using Microsoft.ApplicationInsights.Channel;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights.Extensibility.Implementation.External;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
+    using Microsoft.ApplicationInsights.DataContracts;
+    using Microsoft.ApplicationInsights.Extensibility;
+    using Microsoft.ApplicationInsights.Extensibility.Implementation.External;
+    using System.Collections.Generic;
+    using System.Diagnostics.Tracing;
 
     public class EventSourceTelemetryInitializer : ITelemetryInitializer
     {
         private readonly EventSourceOptions eventSourceOptions;
         private readonly EventSource eventSource;
 
+        private const string EventProviderName = "Microsoft-ApplicationInsights";
+        private const string EventName = "Request";
+
+        private const string ServiceProfilerEventKey = "InternalServiceProfilerEvent";
+
         public EventSourceTelemetryInitializer()
         {
             this.eventSource = new EventSource(
-                "Microsoft.ApplicationInsights",
+                EventProviderName,
                 EventSourceSettings.EtwSelfDescribingEventFormat,
                 "ETW_GROUP",
                 "{0d943590-b235-5bdb-f854-89520f32fc0b}");
@@ -29,6 +34,10 @@ using System.Diagnostics.Tracing;
             if (telemetry is RequestTelemetry)
             {
                 var request = telemetry as RequestTelemetry;
+
+                // Adding a new property to request telemetry, thereby adding the same property to the service profiler event which enables the filtering in UI.
+                var serviceProfilerProperty = new KeyValuePair<string, string>(ServiceProfilerEventKey, "true");
+                request.Properties.Add(serviceProfilerProperty);
 
                 var requestData = new RequestData();
                 requestData.duration = request.Duration.ToString();
@@ -53,7 +62,7 @@ using System.Diagnostics.Tracing;
                 operationCtx.Id = request.Context.Operation.Id;
                 operationCtx.Name = request.Context.Operation.Name;
 
-                this.WriteEvent("Request", request.Context.InstrumentationKey, tags, requestData);
+                this.WriteEvent(EventName, request.Context.InstrumentationKey, tags, requestData);
 
                 ApplicationInsightsEventSource.Log.RequestSent(request.Context.InstrumentationKey, request.Name, request.Id);
             }
