@@ -36,8 +36,7 @@
                 var request = telemetry as RequestTelemetry;
 
                 // Adding a new property to request telemetry, thereby adding the same property to the service profiler event which enables the filtering in UI.
-                var serviceProfilerProperty = new KeyValuePair<string, string>(ServiceProfilerEventKey, "true");
-                request.Properties.Add(serviceProfilerProperty);
+                request.Properties[ServiceProfilerEventKey] = "true";
 
                 var requestData = new RequestData();
                 requestData.duration = request.Duration.ToString();
